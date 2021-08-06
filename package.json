@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "populateFirstGenPokemons": "node dist/databasePopulation/getFirstGenPokemons.ts",
+    "populateFirstGenPokemons": "node dist/databasePopulation/getFirstGenPokemons.js",
     "test": "NODE_ENV=test npx jest -i",
     "build": "NODE_ENV=production npx tsc --outDir dist",
     "start": "NODE_ENV=production NODE_TLS_REJECT_UNAUTHORIZED=0 node dist/server.js",
