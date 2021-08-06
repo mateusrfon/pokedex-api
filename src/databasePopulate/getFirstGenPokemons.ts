@@ -13,7 +13,7 @@ async function populate() {
         if (pokemons.length === 0) {
             const firstGenLeft = 1;
             const firstGenRight = 151;
-    
+            
             for (let i = firstGenLeft; i <= firstGenRight; i++) {
                 const pokemon = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)).data;
                 const newPokemon = getRepository(Pokemon).create();
