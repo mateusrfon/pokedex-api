@@ -8,16 +8,16 @@ import * as userFactory from "../factories/userFactory";
 
 beforeAll(async () => {
     await init();
-})
+});
 
 beforeEach(async () => {
     await getRepository(Session).query('DELETE FROM sessions');
     await getRepository(User).query('DELETE FROM users');
-})
+});
 
 afterAll(async () => {
     await getConnection().close();
-})
+});
 
 describe("POST /sign-in", () => {
     it("should return status 400 for invalid e-mail", async () => {

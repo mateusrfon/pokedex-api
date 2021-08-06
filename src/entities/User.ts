@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from "typeorm";
 import Session from "./Session";
+import Pokemon from "./Pokemon";
 
 @Entity("users")
 export default class User {
@@ -14,4 +15,8 @@ export default class User {
 
   @OneToMany(() => Session, session => session.user)
   sessions: Session[];
+
+  @ManyToMany(() => Pokemon)
+  @JoinTable()
+  pokemons: Pokemon[];
 }

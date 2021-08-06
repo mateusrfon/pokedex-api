@@ -7,3 +7,8 @@ export async function createUserSession(userId: number) {
     await getRepository(Session).insert({ token, userId });
     return token
 }
+
+export async function authSession(token: string) {
+    const session = await getRepository(Session).findOne({ where: { token }});
+    return session ? session : null;
+}
