@@ -12,6 +12,9 @@ export default class Session {
   @Column()
   token: string;
 
+  @Column({ type: 'timestamp with time zone', default: () => 'CURRENT_TIMESTAMP'})
+  date: Date;
+
   @ManyToOne(() => User, user => user.sessions)
   user: User;
 }

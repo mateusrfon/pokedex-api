@@ -1,4 +1,10 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config({ path: process.env.NODE_ENV === "test" ? ".env.test" : ".env" });
+} else {
+  dotenv.config();
+}
 
 module.exports = {
   type: "postgres",

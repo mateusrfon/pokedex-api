@@ -14,11 +14,17 @@ export async function getUsers () {
 
 export async function getUserByEmail (email: string) {
   const user = await getRepository(User).findOne({ where: { email }});
-  return user
+  return user ? user : null
 }
 
 export async function createUser(email: string, password: string) {
   const hashPassword = bcrypt.hashSync(password, 10);
   const user = { email, password: hashPassword };
   await getRepository(User).save(user);
+}
+
+export async function signInValidation(email: string, password: string) {
+  const hashPassword = (await getRepository(User).findOne({ where: { email } })).password;
+  const validation = (bcrypt.compareSync(password, hashPassword));
+  return validation
 }
