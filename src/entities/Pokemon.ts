@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
 
 @Entity("pokemons")
-export default class Session {
+export default class Pokemon {
     @PrimaryGeneratedColumn()
     id: number;
 
