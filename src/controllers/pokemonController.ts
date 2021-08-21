@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import * as sessionService from "../services/sessionService";
 import * as pokemonService from "../services/pokemonService";
 
-export async function catchEmAll(req: Request, res: Response ) {
+export async function getAllPokemons(req: Request, res: Response ) {
     //middleware auth
     const token: string = req.headers.authorization?.split("Bearer ")[1];
     if (!token) return res.sendStatus(401);

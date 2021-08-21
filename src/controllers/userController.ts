@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import Joi from "joi";
 
 import * as userService from "../services/userService";
 import * as sessionService from "../services/sessionService";
+import { signInBodySchema, signUpBodySchema } from "./schemas";
 
 export async function getUsers (req: Request, res: Response) {
   try {
@@ -13,12 +13,6 @@ export async function getUsers (req: Request, res: Response) {
     res.sendStatus(500);
   }
 }
-
-const signUpBodySchema = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
-  confirmPassword: Joi.string().required()
-});
 
 interface SignUpBody {
   email: string,
@@ -40,11 +34,6 @@ export async function signUp (req: Request, res: Response) {
   
   res.sendStatus(201);
 }
-
-const signInBodySchema = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().required()
-});
 
 interface SignInBody {
   email: string,

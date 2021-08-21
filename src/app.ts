@@ -17,7 +17,7 @@ app.get("/users", userController.getUsers);
 
 app.post("/sign-up", userController.signUp);
 app.post("/sign-in", userController.signIn);
-app.get("/pokemons", pokemonController.catchEmAll);
+app.get("/pokemons", pokemonController.getAllPokemons);
 
 export async function init () {
   await connectDatabase();
