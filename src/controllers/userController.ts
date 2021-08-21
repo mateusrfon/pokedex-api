@@ -30,9 +30,9 @@ export async function signUp (req: Request, res: Response) {
 
   if (password !== confirmPassword) return res.sendStatus(400);
 
-  await userService.createUser(email, password);
+  const insertedUser = await userService.createUser(email, password);
   
-  res.sendStatus(201);
+  res.send(insertedUser);
 }
 
 interface SignInBody {
