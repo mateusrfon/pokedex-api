@@ -9,7 +9,7 @@ export default class Session {
     name: string;
 
     @Column()
-    number: number;
+    number: string;
 
     @Column()
     image: string;
