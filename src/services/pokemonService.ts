@@ -9,7 +9,7 @@ interface PokemonCheck extends Pokemon {
 export async function getPokemonsCheckingUser(userId: number) {
     const user = await getRepository(User).findOne({ where: { id: userId }, relations: ['pokemons'] });
     const pokemons = await getRepository(Pokemon).find();
-    pokemons.map((item: PokemonCheck) => {
+    const pokemonsCheck = pokemons.map((item: PokemonCheck) => {
         if (user.pokemons.includes(item)) {
             item.inMyPokemons = true;
         } else {
@@ -17,5 +17,5 @@ export async function getPokemonsCheckingUser(userId: number) {
         }
         return item
     });
-    return pokemons
+    return pokemonsCheck
 }
