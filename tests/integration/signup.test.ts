@@ -9,7 +9,7 @@ beforeAll(async () => {
 })
 
 beforeEach(async () => {
-    await getRepository(User).query('DELETE FROM users');
+    await getRepository(User).query("DELETE FROM users");
 })
 
 afterAll(async () => {
@@ -48,13 +48,13 @@ describe("POST /sign-up", () => {
         expect(result.status).toBe(400);
     });
 
-    it("should return status 201 for valid request", async () => {
+    it("should return user email for valid request", async () => {
         const body = {
             email: "asd@asd.com",
             password: "aloha",
             confirmPassword: "aloha"
         }
         const result = await supertest(app).post("/sign-up").send(body);
-        expect(result.status).toBe(201);
+        expect(result.body).toEqual({ email: body.email });
     });
 })

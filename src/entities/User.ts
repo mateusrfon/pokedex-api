@@ -13,10 +13,10 @@ export default class User {
   @Column()
   password: string;
 
-  @OneToMany(() => Session, session => session.user)
+  @OneToMany(() => Session, session => session.user, { onDelete: 'CASCADE' })
   sessions: Session[];
 
-  @ManyToMany(() => Pokemon)
+  @ManyToMany(() => Pokemon, { onDelete: 'CASCADE' })
   @JoinTable()
   pokemons: Pokemon[];
 }

@@ -25,10 +25,9 @@ describe("GET /pokemons", () => {
         expect(result.status).toBe(401)
     });
 
-    it("should return status 200 and array of pokemons for valid token", async () => {
+    it("should return an array of pokemons for valid token", async () => {
         const token = await sessionFactory.createSession();
         const result = await supertest(app).get("/pokemons").set("authorization", `Bearer ${token}`);
-        expect(result.status).toBe(200);
         expect(result.body).toEqual(expect.any(Array));
     })
 })

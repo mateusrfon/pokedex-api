@@ -20,7 +20,8 @@ export async function getUserByEmail (email: string) {
 export async function createUser(email: string, password: string) {
   const hashPassword = bcrypt.hashSync(password, 10);
   const user = { email, password: hashPassword };
-  return (await getRepository(User).save(user)).email;
+  const insertedUser = await getRepository(User).save(user);
+  return { email: insertedUser.email }
 }
 
 export async function signInValidation(email: string, password: string) {

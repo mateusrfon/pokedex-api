@@ -1,10 +1,9 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 import axios from "axios";
-import { getConnection, getRepository } from "typeorm";
-import { init } from "../app";
+import { getRepository } from "typeorm";
 import Pokemon from "../entities/Pokemon";
 
-export class Seed1629584505523 implements MigrationInterface {
+export class PokemonSeed1stGen1629590746868 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         try {
